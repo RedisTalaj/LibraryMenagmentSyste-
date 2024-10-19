@@ -6,7 +6,6 @@ public class AppMain {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
-        BookService bookService = new BookService();
 
         System.out.println("\nMirsevini, zgjidhni nje nga opsionet me poshte: ");
         while (running) {
@@ -22,19 +21,19 @@ public class AppMain {
 
             switch (opsion) {
                 case 1:
-                    bookService.addBook(scanner);
+                    BookService.addBook(scanner);
                     break;
 
                 case 2:
-                    bookService.borrowBook(scanner);
+                    BookService.borrowBook(scanner);
                     break;
 
                 case 3:
-                    bookService.deleteBook(scanner);
+                    BookService.deleteBook(scanner);
                     break;
 
                 case 4:
-                    bookService.displayLoanedBooks(scanner);
+                    BookService.displayLoanedBooks(scanner);
                     break;
 
                 case 0:
