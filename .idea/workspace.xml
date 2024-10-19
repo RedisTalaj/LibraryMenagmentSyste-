@@ -5,9 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a0ad33a3-cd61-461a-bba1-f685953bc509" name="Changes" comment="Commit">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sda/AppMainHibernate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sda/configuration/HibernateUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sda/entity/LoanedBook.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sda/service/BookServiceHibernate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sda/configuration/DatabaseConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sda/configuration/DatabaseConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sda/service/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sda/service/BookService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sda/AppMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sda/AppMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sda/entity/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sda/entity/Book.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,25 +50,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.AppMain.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Book.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/User/IdeaProjects/LibraryMenagmentSystem/src/main/java/com/sda/Main.java&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.AppMain.executor": "Run",
+    "Application.Book.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "develop",
+    "kotlin-language-version-configured": "true",
+    "onboarding.tips.debug.path": "C:/Users/User/IdeaProjects/LibraryMenagmentSystem/src/main/java/com/sda/Main.java",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="AppMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.sda.AppMain" />
       <module name="LibraryMenagmentSystem" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.sda.*" />
+          <option name="PATTERN" value="com.sda.configuration.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -165,7 +172,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729335096486</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Commit">
+      <option name="closed" value="true" />
+      <created>1729340072672</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1729340072672</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

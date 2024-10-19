@@ -1,0 +1,21 @@
+<hibernate-configuration>
+    <session-factory>
+        <!-- JDBC Database connection settings -->
+        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost:3308/library</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">user123</property>
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hbm2ddl.auto">update</property>
+
+
+        <!-- Disable SQL logging -->
+        <property name="hibernate.show_sql">false</property>
+        <property name="hibernate.format_sql">false</property>
+
+        <!-- Entity mappings -->
+        <mapping class="com.sda.entity.Book"/>
+        <mapping class="com.sda.entity.LoanedBook"/>
+
+    </session-factory>
+</hibernate-configuration>

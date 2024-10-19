@@ -1,5 +1,6 @@
 package com.sda;
-import com.sda.service.BookService;
+import com.sda.service.BookServiceHibernate;
+
 import java.util.Scanner;
 
 public class AppMain {
@@ -21,19 +22,19 @@ public class AppMain {
 
             switch (opsion) {
                 case 1:
-                    BookService.addBook(scanner);
+                    BookServiceHibernate.addBook(scanner);
                     break;
 
                 case 2:
-                    BookService.borrowBook(scanner);
+                    BookServiceHibernate.borrowBook(scanner);
                     break;
 
                 case 3:
-                    BookService.deleteBook(scanner);
+                    BookServiceHibernate.deleteBook(scanner);
                     break;
 
                 case 4:
-                    BookService.displayLoanedBooks(scanner);
+                    BookServiceHibernate.displayLoanedBooks(scanner);
                     break;
 
                 case 0:
