@@ -166,20 +166,28 @@ public class Book {
 
             connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
 
-            String checkBookQuery = "SELECT * FROM book WHERE tittle = ?";
+            String checkBookQuery = "SELECT book_id FROM book WHERE tittle = ?";
             PreparedStatement checkBookStmt = connection.prepareStatement(checkBookQuery);
             checkBookStmt.setString(1, title);
             ResultSet resultSet = checkBookStmt.executeQuery();
 
             if (resultSet.next()) {
-                String deleteBookQuery = "DELETE FROM book WHERE tittle = ?";
+                int bookId = resultSet.getInt("book_id");
+
+                String deleteLoanedBookQuery = "DELETE FROM loanedBook WHERE book_id = ?";
+                PreparedStatement deleteLoanedBookStmt = connection.prepareStatement(deleteLoanedBookQuery);
+                deleteLoanedBookStmt.setInt(1, bookId);
+                deleteLoanedBookStmt.executeUpdate();
+
+                String deleteBookQuery = "DELETE FROM book WHERE book_id = ?";
                 PreparedStatement deleteBookStmt = connection.prepareStatement(deleteBookQuery);
-                deleteBookStmt.setString(1, title);
+                deleteBookStmt.setInt(1, bookId);
 
                 int rowsDeleted = deleteBookStmt.executeUpdate();
                 if (rowsDeleted > 0) {
                     System.out.println("Libri '" + title + "' u fshi me sukses!");
                 }
+
             } else {
                 System.out.println("Libri me titull '" + title + "' nuk u gjet.");
             }
@@ -194,6 +202,7 @@ public class Book {
             }
         }
     }
+
     public static void displayLoanedBooks(Scanner scanner) {
         Connection connection = null;
         try {
