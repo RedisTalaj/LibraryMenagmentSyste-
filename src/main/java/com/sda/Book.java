@@ -21,6 +21,7 @@ public class Book {
             System.out.println("1. Shto nje liber!");
             System.out.println("2. Huazo nje liber!");
             System.out.println("3. Fshi nje liber!");
+            System.out.println("4. Shiko listen e librave te huazuar!");
             System.out.println("0. Dil nga programi!");
 
             int opsion = scanner.nextInt();
@@ -37,6 +38,10 @@ public class Book {
 
                 case 3:
                     deleteBook(scanner);
+                    break;
+
+                case 4:
+                    displayLoanedBooks(scanner);
                     break;
 
                 case 0:
@@ -124,7 +129,7 @@ public class Book {
                         System.out.println("Libri '" + title + "' u huazua me sukses!");
                     }
 
-                    connection.commit();  // Commit transaction if both operations succeed
+                    connection.commit();
 
                 } else {
                     System.out.println("Libri '" + title + "' eshte i huazuar tashme ose nuk ka kopje te lira.");
@@ -137,7 +142,7 @@ public class Book {
             e.printStackTrace();
             try {
                 if (connection != null) {
-                    connection.rollback();  // Rollback if something goes wrong
+                    connection.rollback();
                     System.out.println("Transaksioni deshtoi. Te dhenat u kthyen.");
                 }
             } catch (Exception rollbackException) {
@@ -189,5 +194,46 @@ public class Book {
             }
         }
     }
+    public static void displayLoanedBooks(Scanner scanner) {
+        Connection connection = null;
+        try {
+            connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
 
+            String query = "SELECT b.tittle, b.author, lb.loanedDate, lb.returnDate " +
+                    "FROM loanedBook lb " +
+                    "JOIN book b ON lb.book_id = b.book_id";
+            PreparedStatement statement = connection.prepareStatement(query);
+            ResultSet resultSet = statement.executeQuery();
+
+            // Check if there are any loaned books
+            if (!resultSet.isBeforeFirst()) {
+                System.out.println("Nuk ka libra te huazuar aktualisht.");
+                return;
+            }
+
+            System.out.println("Lista e librave te huazuar:");
+
+            while (resultSet.next()) {
+                String title = resultSet.getString("tittle");
+                String author = resultSet.getString("author");
+                Date loanedDate = resultSet.getDate("loanedDate");
+                Date returnDate = resultSet.getDate("returnDate");
+
+                System.out.println("Titulli: " + title);
+                System.out.println("Autori: " + author);
+                System.out.println("Data e huazimit: " + loanedDate);
+                System.out.println("Afati i kthimit: " + returnDate);
+                System.out.println("--------------------------------------------------");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (connection != null) connection.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }
