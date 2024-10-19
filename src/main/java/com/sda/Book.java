@@ -205,7 +205,6 @@ public class Book {
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
 
-            // Check if there are any loaned books
             if (!resultSet.isBeforeFirst()) {
                 System.out.println("Nuk ka libra te huazuar aktualisht.");
                 return;
