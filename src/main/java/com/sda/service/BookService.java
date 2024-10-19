@@ -1,6 +1,7 @@
 package com.sda.service;
+import com.sda.configuration.DatabaseConfiguration;
+
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Scanner;
@@ -9,9 +10,6 @@ import java.time.LocalDate;
 
 
 public class BookService {
-    public static final String JDBC_URL = "jdbc:mysql://localhost:3308/library";
-    public static final String USERNAME = "user";
-    public static final String PASSWORD = "user123";
 
     public static void addBook(Scanner scanner) {
         Connection connection = null;
@@ -27,7 +25,7 @@ public class BookService {
             System.out.print("Sasia e librit: ");
             int sasia = scanner.nextInt();
 
-            connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
+            connection = DatabaseConfiguration.getConnection();
 
             String sql = "INSERT INTO book (tittle, author, sasia) VALUES (?, ?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -56,7 +54,7 @@ public class BookService {
             System.out.println("Vendosni titullin e librit qe doni te huazoni: ");
             String title = scanner.nextLine();
 
-            connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
+            connection = DatabaseConfiguration.getConnection();
             connection.setAutoCommit(false);  // Start transaction
 
             String checkAvailabilityQuery = "SELECT book_id, sasia FROM book WHERE tittle = ?";
@@ -118,7 +116,7 @@ public class BookService {
             System.out.println("Vendosni titullin e librit qe doni te fshini: ");
             String title = scanner.nextLine();
 
-            connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
+            connection = DatabaseConfiguration.getConnection();
 
             String checkBookQuery = "SELECT book_id FROM book WHERE tittle = ?";
             PreparedStatement checkBookStmt = connection.prepareStatement(checkBookQuery);
@@ -159,7 +157,7 @@ public class BookService {
     public static void displayLoanedBooks(Scanner scanner) {
         Connection connection = null;
         try {
-            connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
+            connection = DatabaseConfiguration.getConnection();
 
             String query = "SELECT b.tittle, b.author, lb.loanedDate, lb.returnDate " +
                     "FROM loanedBook lb " +
